@@ -1,0 +1,47 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+use Config;
+
+class UsersTableSeeder extends Seeder
+{
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+
+        \DB::table('users')->insert([
+            'name' => 'Ivo Pontes',
+            'email' => 'ivo@pontes.com',
+            'password' => bcrypt(Config::get("app.ip_pass"))
+        ]);
+
+        \DB::table('users')->insert([
+            'name' => 'Admin',
+            'email' => 'lamsh@uft.edu.br',
+            'password' => bcrypt(Config::get("app.lam_pass"))
+        ]);
+
+        Permission::create(['name' => 'edit species']);
+        $role = Role::create(['name' => 'editor']);
+        $role->givePermissionTo('edit species');
+
+        $users = User::where('email','=','ivo@pontes.com')
+                        ->orWhere('email','=','lamsh@uft.edu.br')
+                        ->get();
+
+        foreach ($users as $user)
+        {
+            $user->assignRole('editor');
+        }
+	}
+}
