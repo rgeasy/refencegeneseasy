@@ -11,7 +11,7 @@ Reference Genes Easy
 
 ## Authors
 
-* [Ivo Pontes Araújo](https://github.com/poentes) (ivopoentes@uft.edu.br)
+* [Ivo Pontes Araújo](https://github.com/ivopontes) (ivo.pontes@uft.edu.br)
 * [Micaele Souza](https://github.com/) (micaele.souzasp@gmail.com)
 
 ## License
