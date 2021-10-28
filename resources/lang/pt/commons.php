@@ -12,7 +12,7 @@ return [
     'Logout' => 'Sair',
     'Login' => 'Entrar',
     'Animal' => 'Animais',
-    'Vegetable' => 'Vegetais',
+    'Vegetable' => 'Plantas',
     'Microorganism' => 'Microorganismos',
     'Species' => 'Espécies',
     'Name' => 'Nome',

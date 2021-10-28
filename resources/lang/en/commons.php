@@ -11,7 +11,7 @@ return [
     'Contact' => 'Contact',
     'Hello' => 'Hello',
     'Animal' => 'Animal',
-    'Vegetable' => 'Vegetable',
+    'Vegetable' => 'Plants',
     'Microorganism' => 'Microorganism',
     'Species' => 'Species',
     'Activate' => 'Activate',
