@@ -2,6 +2,9 @@
 /public/hot
 /public/images
 /public/storage
+!/storage/framework/cache/.gitignore
+!/storage/framework/views/.gitignore
+!/storage/framework/session/.gitignore
 /storage/framework/cache/*
 /storage/framework/views/*
 /storage/framework/session/*
