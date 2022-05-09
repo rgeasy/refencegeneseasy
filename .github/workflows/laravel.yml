@@ -19,7 +19,7 @@ jobs:
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Update Session Folders
-      run:  mkdir -p storage/framework/sessions storage/framework/views -p storage/framework/cache
+      run:  mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Generate key
