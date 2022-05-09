@@ -18,30 +18,35 @@ class UsersTableSeeder extends Seeder
 	 */
 	public function run()
 	{
+        $admin = User::where('email','=','ivo.pontes@uft.edu.br')->first();
 
-        \DB::table('users')->insert([
-            'name' => 'Ivo Pontes',
-            'email' => 'ivo@pontes.com',
-            'password' => bcrypt(Config::get("app.ip_pass"))
-        ]);
-
-        \DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => 'lamsh@uft.edu.br',
-            'password' => bcrypt(Config::get("app.lam_pass"))
-        ]);
-
-        Permission::create(['name' => 'edit species']);
-        $role = Role::create(['name' => 'editor']);
-        $role->givePermissionTo('edit species');
-
-        $users = User::where('email','=','ivo@pontes.com')
-                        ->orWhere('email','=','lamsh@uft.edu.br')
-                        ->get();
-
-        foreach ($users as $user)
+        if(empty($admin))
         {
-            $user->assignRole('editor');
+
+                    \DB::table('users')->insert([
+                        'name' => 'Ivo Pontes',
+                        'email' => 'ivo@pontes.com',
+                        'password' => bcrypt(Config::get("app.ip_pass"))
+                    ]);
+
+                    \DB::table('users')->insert([
+                        'name' => 'Admin',
+                        'email' => 'lamsh@uft.edu.br',
+                        'password' => bcrypt(Config::get("app.lam_pass"))
+                    ]);
+
+                    Permission::create(['name' => 'edit species']);
+                    $role = Role::create(['name' => 'editor']);
+                    $role->givePermissionTo('edit species');
+
+                    $users = User::where('email','=','ivo@pontes.com')
+                                    ->orWhere('email','=','lamsh@uft.edu.br')
+                                    ->get();
+
+                    foreach ($users as $user)
+                    {
+                        $user->assignRole('editor');
+                    }
         }
 	}
 }
