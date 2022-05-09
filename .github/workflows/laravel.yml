@@ -18,11 +18,6 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-<<<<<<< HEAD
-=======
-    - name: Update Session Folders
-      run:  mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache
->>>>>>> 9b5b7608d726547105b460afde399a4a1864ab86
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Clear All Cache
