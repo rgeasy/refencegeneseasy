@@ -22,8 +22,6 @@ jobs:
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
-    - name: Clear All Cache
-      run: php artisan optimize:clear
     - name: Generate key
       run: php artisan key:generate
     - name: Create Database
@@ -74,3 +72,4 @@ jobs:
             echo $USER_PASS | sudo -S docker-compose exec -T app composer install
             echo $USER_PASS | sudo -S docker-compose exec -T app php artisan migrate --force
             echo $USER_PASS | sudo -S docker-compose exec -T app php artisan db:seed --force
+            echo $USER_PASS | sudo -S docker-compose exec -T app php artisan optimize:clear
