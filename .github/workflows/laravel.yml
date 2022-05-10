@@ -19,7 +19,7 @@ jobs:
       env:
         DOT_ENV: ${{secrets.DOT_ENV_PRODUCTION}}
     - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Clear All Cache
