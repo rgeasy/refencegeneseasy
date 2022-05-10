@@ -18,11 +18,11 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Update .env file
       run: |
-        echo "DB_PASSWORD$${{secrets.ENV_DB_PASSWORD}}" >> .env
-        echo "DB_USERNAME$${{secrets.ENV_DB_USERNAME}}"  >> .env
-        echo "IP_PASS$${{secrets.ENV_IP_PASS}}"  >> .env
-        echo "LAM_PASS$${{secrets.ENV_LAM_PASS}}"  >> .env
-        echo "MAIL_PASSWORD$${{secrets.ENV_MAIL_PASSWORD}}" >> .env
+        echo "DB_PASSWORD=$${{secrets.ENV_DB_PASSWORD}}" >> .env
+        echo "DB_USERNAME=$${{secrets.ENV_DB_USERNAME}}"  >> .env
+        echo "IP_PASS=$${{secrets.ENV_IP_PASS}}"  >> .env
+        echo "LAM_PASS=$${{secrets.ENV_LAM_PASS}}"  >> .env
+        echo "MAIL_PASSWORD=$${{secrets.ENV_MAIL_PASSWORD}}" >> .env
     - name: Echoing Before Dependencies
       run: cat .env
     - name: Install Dependencies
