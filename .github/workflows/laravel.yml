@@ -14,8 +14,10 @@ jobs:
       with:
         php-version: '7.4'
     - uses: actions/checkout@v2
-    - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Create .env file
+      run: echo "$DOT_ENV" > '.env'
+      env:
+        DOT_ENV: ${{secrets.DOT_ENV_PRODUCTION}}
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-
     - name: Directory Permissions
