@@ -34,7 +34,10 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit
+      run: |
+        echo ${{secrets.DOT_ENV_PRODUCTION}} > .env
+        php artisan key:generate
+        vendor/bin/phpunit
 
   laravel-cd:
     name: CD
