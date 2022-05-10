@@ -16,6 +16,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Update DB_PASSWORD .env file
+      run: echo "$DB_PASS" >> .env
+    - name: Echoing
+      run: cat .env
     - name: Update .env file
       run: |
         echo DB_PASS >> .env
