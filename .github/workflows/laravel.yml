@@ -18,11 +18,17 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Update .env file
       run: |
-        echo ${{secrets.ENV_DB_PASSWORD}} >> .env
-        echo ${{secrets.ENV_DB_USERNAME}} >> .env
-        echo ${{secrets.ENV_IP_PASS}} >> .env
-        echo ${{secrets.ENV_LAM_PASS}} >> .env
-        echo ${{secrets.ENV_MAIL_PASSWORD}} >> .env
+        echo "$DB_PASS" >> .env
+        echo "$DB_USER"  >> .env
+        echo "$IP_PASS"  >> .env
+        echo "$LAM_PASS"  >> .env
+        echo "$EMAIL_PASS"  >> .env
+      env:
+        DB_PASS: ${{secrets.ENV_DB_PASSWORD}}
+        DB_USER: ${{secrets.ENV_DB_USERNAME}}
+        IP_PASS: ${{secrets.ENV_IP_PASS}}
+        LAM_PASS: ${{secrets.ENV_LAM_PASS}}
+        EMAIL_PASS: ${{secrets.ENV_MAIL_PASSWORD}}
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Directory Permissions
