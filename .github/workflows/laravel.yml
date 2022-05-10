@@ -18,11 +18,11 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Update .env file
       run: |
-        echo ${{DB_PASS}} >> .env
-        echo ${{DB_USER}}  >> .env
-        echo ${{IP_PASS}}  >> .env
-        echo ${{LAM_PASS}}  >> .env
-        echo ${{EMAIL_PASS}}  >> .env
+        echo DB_PASS >> .env
+        echo DB_USER  >> .env
+        echo IP_PASS  >> .env
+        echo LAM_PASS  >> .env
+        echo EMAIL_PASS >> .env
       env:
         DB_PASS: ${{secrets.ENV_DB_PASSWORD}}
         DB_USER: ${{secrets.ENV_DB_USERNAME}}
