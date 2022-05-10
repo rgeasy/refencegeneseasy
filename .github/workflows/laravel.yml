@@ -15,16 +15,7 @@ jobs:
         php-version: '7.4'
     - uses: actions/checkout@v2
     - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: Update .env file
-      run: |
-        echo "DB_PASSWORD=$${{secrets.ENV_DB_PASSWORD}}" >> .env
-        echo "DB_USERNAME=$${{secrets.ENV_DB_USERNAME}}"  >> .env
-        echo "IP_PASS=$${{secrets.ENV_IP_PASS}}"  >> .env
-        echo "LAM_PASS=$${{secrets.ENV_LAM_PASS}}"  >> .env
-        echo "MAIL_PASSWORD=$${{secrets.ENV_MAIL_PASSWORD}}" >> .env
-    - name: Echoing Before Dependencies
-      run: cat .env
+      run: php -r "file_exists('../secrets/.env') || copy('../secrets/.env.example', '.env');"
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Directory Permissions
