@@ -15,7 +15,7 @@ jobs:
         php-version: '7.4'
     - uses: actions/checkout@v2
     - name: Create .env file
-      run: echo "$DOT_ENV" > '.env'
+      run: echo "${{secrets.DOT_ENV_PRODUCTION}}" > '.env'
       env:
         DOT_ENV: ${{secrets.DOT_ENV_PRODUCTION}}
     - name: Install Dependencies
