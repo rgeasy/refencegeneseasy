@@ -9,5 +9,5 @@ return [
     'Are You Sure' => 'Você tem certeza que deseja ativar esse Artigo?',
     'Successfully Activated' => 'Espécie ativada com Sucesso.',
     'Not Activated' => 'Não foi possível ativar este Artigo.',
-    'Choose Species' => 'Você escolheu apenas uma espécie, essa espécie seria:'
+    'Choose Species' => 'Qual grupo de organismo a nova espécie pertence?'
 ];

@@ -58,8 +58,9 @@ return [
 
     'api_url' => env('API_URL', null),
 
-    'ip_pass' => env('IP_PASS', null),
-
+    'ivo_pass' => env('IVO_PASS', null),
+    'micaele_pass' => env('MICAELE_PASS', null),
+    'rafael_pass' => env('RAFAEL_PASS', null),
     'lam_pass' => env('LAM_PASS', null),
 
     /*

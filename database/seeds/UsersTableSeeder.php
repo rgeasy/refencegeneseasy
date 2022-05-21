@@ -25,8 +25,20 @@ class UsersTableSeeder extends Seeder
 
                     \DB::table('users')->insert([
                         'name' => 'Ivo Pontes',
-                        'email' => 'ivo@pontes.com',
-                        'password' => bcrypt(Config::get("app.ip_pass"))
+                        'email' => 'ivo.pontes@uft.edu.br',
+                        'password' => bcrypt(Config::get("app.ivo_pass"))
+                    ]);
+
+                    \DB::table('users')->insert([
+                        'name' => 'Micaele Rodrigues de Souza',
+                        'email' => 'micaele.sp@uft.edu.br',
+                        'password' => bcrypt(Config::get("app.micaele_pass"))
+                    ]);
+
+                    \DB::table('users')->insert([
+                        'name' => 'Rafael Silva Tavares',
+                        'email' => 'rafael.tavares@uft.edu.br',
+                        'password' => bcrypt(Config::get("app.rafael_pass"))
                     ]);
 
                     \DB::table('users')->insert([
@@ -39,7 +51,9 @@ class UsersTableSeeder extends Seeder
                     $role = Role::create(['name' => 'editor']);
                     $role->givePermissionTo('edit species');
 
-                    $users = User::where('email','=','ivo@pontes.com')
+                    $users = User::where('email','=','ivo.pontes@uft.edu.br')
+                                    ->orWhere('email','=','micaele.sp@uft.edu.br')
+                                    ->orWhere('email','=','rafael.tavares@uft.edu.br')
                                     ->orWhere('email','=','lamsh@uft.edu.br')
                                     ->get();
 

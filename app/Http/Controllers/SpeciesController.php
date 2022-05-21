@@ -15,8 +15,7 @@ use Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use PDF;
-use Intervention\Image\ImageManagerStatic as Image;
-
+use Intervention\Image\Facades\Image;
 
 class SpeciesController extends Controller
 {
@@ -213,7 +212,6 @@ class SpeciesController extends Controller
      */
     public function update(Request $request, Species $species)
     {
-        //dd(isset($species->realpath));
 
         if($request->file('file'))
         {
@@ -223,15 +221,19 @@ class SpeciesController extends Controller
             $extension = pathinfo($full_name, PATHINFO_EXTENSION);
             $time = Carbon::now()->toDateTimeString();
 
+            
+
+            $path = 'storage/images/'.$filename.'_'.$time.'.'.$extension;
+            //dd(public_path($path));
+            //dd(gd_info());
             $image = Image::make($file);
             $image->resize(75, 75);
 
-            $path = 'images/'.$filename.'_'.$time.'.'.$extension;
-            //dd(public_path($path));
+            //dd(Storage::disk('public')->getAdapter()->getPathPrefix());
             $image->save(public_path($path));
 
-            Storage::disk('local')->put($path, $image );
-
+            //Storage::disk('public')->put($path, $image );
+            //dd($species->realpath);
             if (isset($species->realpath))
             {
                 Storage::delete($species->realpath);
