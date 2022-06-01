@@ -65,9 +65,10 @@ jobs:
             echo $USER_PASS | sudo -S docker ps
             echo $USER_PASS | sudo -S docker images
 
-            cd ci-cd/
+            cd rgeasy/
             echo $USER_PASS | sudo -S docker-compose up -d
             echo $USER_PASS | sudo -S docker-compose exec -T app composer install
+            echo $USER_PASS | sudo -S docker-compose exec -T app php artisan storage:link
             echo $USER_PASS | sudo -S docker-compose exec -T app php artisan migrate --force
             echo $USER_PASS | sudo -S docker-compose exec -T app php artisan db:seed --force
             echo $USER_PASS | sudo -S docker-compose exec -T app php artisan optimize:clear
