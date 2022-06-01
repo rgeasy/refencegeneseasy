@@ -19,5 +19,7 @@ return [
     'Update' => 'Atualizar',
     'Activate' => 'Ativar',
     'Cancel' => 'Cancelar',
-    'Manual' => 'Manual do Usuário'
+    'Manual' => 'Manual do Usuário',
+    'Activate' => 'Ativar',
+    'Samples' => 'Amostras'
 ];

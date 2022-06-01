@@ -18,5 +18,7 @@ return [
     'Cancel' => 'Cancel',
     'Name' => 'Name',
     'Update' => 'Update',
-    'Manual' => 'User Manual'
+    'Manual' => 'User Manual',
+    'Activate' => 'Activate',
+    'Samples' => 'Samples'
 ];

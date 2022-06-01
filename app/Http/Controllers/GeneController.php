@@ -14,7 +14,7 @@ class GeneController extends Controller
     function __construct(ReffinderService $service)
     {
         $this->service = $service;
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**

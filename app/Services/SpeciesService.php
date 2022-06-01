@@ -8,7 +8,8 @@ use App\Models\Gene;
 use App\Models\Species;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Carbon;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class SpeciesService
 {
@@ -16,12 +17,31 @@ class SpeciesService
 	{
         $species = explode(',', $data['species']);
 
+        /* Tratamento de Imagens */
+        $file = $data['file'];
+
+        if($file)
+        {
+            $full_name = $file->getClientOriginalName();
+            $filename = pathinfo($full_name, PATHINFO_FILENAME);
+            $extension = pathinfo($full_name, PATHINFO_EXTENSION);
+            $time = Carbon::now()->toDateTimeString();
+
+            
+
+            $path = 'storage/images/'.$filename.'_'.$time.'.'.$extension;
+            //dd(public_path($path));
+            //dd(gd_info());
+            $image = Image::make($file);
+            $image->resize(75, 75);
+            $image->save(public_path($path));
+        }
+
         if (is_string($species))
         {
             $species = array($species);
-        }
-
-        //dd($species);
+        }   
+     
 
         for ($i=0; $i < sizeof($species); $i++)
         {
@@ -30,7 +50,10 @@ class SpeciesService
 
             if (!Species::where('name','=',strtolower($species[$i]))->exists())
             {
-                Species::create(['name' => strtolower($species[$i]), 'tipo' => $data['tipo'][$i]]);
+                $new_species = Species::create(['name' => strtolower($species[$i]), 'tipo' => $data['tipo'][$i]]);
+                $new_species->image = $filename.'.'.$extension;
+                $new_species->realpath = $path;
+                $new_species->save();
             }
         }
 
@@ -48,7 +71,7 @@ class SpeciesService
         $article->name = $data['article'];
         $article->doi = $data['doi'];
         $article->year = $data['year'];
-        $article->user = Auth::user()->id;
+        $article->user = 1; //Auth::user()->id;
         $article->author = $citation;
         $article->save();
 

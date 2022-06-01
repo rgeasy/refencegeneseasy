@@ -56,9 +56,9 @@ ul {
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('login') }}">{{ __('commons.Login') }}</a>
 			</li>
-			<li class="nav-item">
+			<!--li class="nav-item">
 				<a class="nav-link" href="{{ route('register') }}">{{ __('auth.Register') }}</a>
-			</li>
+			</li-->
 		@else
 			<li class="nav-item dropdown">
 				<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -66,14 +66,6 @@ ul {
 				</a>
 
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    @if (Auth::user()->email == 'lamsh@uft.edu.br' || Auth::user()->email == 'ivo@pontes.com')
-                        <a class="dropdown-item" href="{{ url('/species/activate') }}">
-                            {{ __('home.activate articles') }}
-                        </a>
-                    @endif
-					<a class="dropdown-item" href="{{ url('/species/edit') }}">
-						{{ __('home.edit species') }}
-					</a>
 					<a class="dropdown-item" href="{{ route('logout') }}"
 					   onclick="event.preventDefault();
 									 document.getElementById('logout-form').submit();">

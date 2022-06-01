@@ -20,7 +20,7 @@
                <img id="show-image" src="{{asset($species->realpath)}}" width="75" height="75"/>
             </div>
             <div class="form-group col-lg-2 col-md-2 col-sm-3">
-              <label for="doi">{{ __('genes.ArticleFile') }}</label>
+              <label for="doi">{{ __('genes.File') }}</label>
               <input type="file" class="form-control-file" name="file" id="file" onchange="readURL(this);">
             </div>
           </div>
@@ -30,12 +30,12 @@
               <input type="text" class="form-control" name="name" value="{{$species->name}}">
             </div>
           </div>
-            @can('edit species')
-                <div class="form-group form-check col-lg-2 col-md-2 col-sm-3" style='padding-left: 1.3rem;'>
-                    <input type="checkbox" class="form-check-input" name="active">
-                    <label class="form-check-label" for="active">{{ __('species.Active')}}</label>
-                </div>
-            @endcan
+     
+          <div class="form-group form-check col-lg-2 col-md-2 col-sm-3" style='padding-left: 1.3rem;'>
+              <input type="checkbox" class="form-check-input" name="active" @if($species->active === 1) checked @endif>
+              <label class="form-check-label" for="active">{{ __('species.Active')}}</label>
+          </div>
+
           <div class="form-row" >
             <div class="form-group col-lg-12 col-md-12 col-sm-12">
               <label for='tipo'>Espécie:</label>

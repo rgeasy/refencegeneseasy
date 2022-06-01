@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,7 +38,7 @@ Route::get('/species/edit', 'SpeciesController@editar');
 Route::get('/species/activate','SpeciesController@activate');
 Route::post('/articles/activate','SpeciesController@ativar');
 //Route::post('/species/activate','SpeciesController@ativar');
-Route::resource('/species', 'SpeciesController');
+Route::resource('/species', 'SpeciesController')->except(['edit']);
 Route::resource('/genes', 'GeneController');
 
 //Reffinder
@@ -45,3 +46,12 @@ Route::post('reffinder', 'ReffinderController@index');
 
 //Route::auth();
 //Route::get('/t', 'HomeController@t');
+
+Route::get('/admin','Admin\AdminController@index')->name('admin')->middleware('auth');
+Route::get('/admin/species','Admin\AdminController@species')->middleware('auth');
+Route::get('/admin/articles','Admin\AdminController@articles')->middleware('auth');
+Route::get('/admin/species/{species}/edit','SpeciesController@edit')->middleware('auth');
+Route::get('/admin/article/{article}/edit','ArticleController@edit')->middleware('auth');
+Route::put('/articles/{article}','ArticleController@update')->middleware('auth');
+//Route::get('/admin/users',[AdminController::class, 'editUser'])->middleware('auth');
+

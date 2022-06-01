@@ -10,6 +10,6 @@ return [
     'Type' => 'Tipo',
     'Primer Sequence (Forward)' => 'Primer Sequence (Forward)',
     'Primer Sequence (Reverse)' => 'Primer Sequence (Reverse)',
-    'ArticleFile' => 'Artigo(Arquivo)'
+    'File' => 'Imagem da Espécie'
     
 ];

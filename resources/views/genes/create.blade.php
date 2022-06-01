@@ -1,6 +1,7 @@
 @extends('layouts/master')
 
 @section('css')
+  <link href="/path/to/css/fileinput.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-select.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-tagsinput.css') }}">
 
@@ -14,8 +15,17 @@
   <div class="row">
     <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-sm-10 offset-sm-1">
       <div style="padding-left: .3rem; padding-right: .3rem;">
-        <form id="form-new-species" action="{{ url('/species') }}" method="POST"> <!-- Tem que ser aqui para centralizar corretamente. -->
+        <form id="form-new-species" action="{{ url('/species') }}" method="POST"  enctype="multipart/form-data"> <!-- Tem que ser aqui para centralizar corretamente. -->
           @csrf
+          <div class="form-row" >
+            <div class="form-group col-lg-1 col-md-2 col-sm-3">
+               <img id="show-image" src="" width="75" height="75"/>
+            </div>
+            <div class="form-group col-lg-2 col-md-2 col-sm-3">
+              <label for="doi">{{ __('genes.File') }}</label>
+              <input type="file" class="form-control-file" name="file" id="file" onchange="readURL(this);">
+            </div>
+          </div>
           <div class="form-row" >
             <div class="form-group col-lg-12 col-md-12 col-sm-12">
               <label for="artigo">{{ __('genes.Add the Species Here:') }}</label><br>
@@ -138,6 +148,23 @@
       let gene = new Gene();
       gene.execute();
   };
+
+  function readURL(input)
+  {
+      if (input.files && input.files[0])
+      {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              $('#show-image')
+                  .attr('src', e.target.result)
+                  .width(75)
+                  .height(75);
+          };
+
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
 
   document.addEventListener("DOMContentLoaded", app);
 </script>

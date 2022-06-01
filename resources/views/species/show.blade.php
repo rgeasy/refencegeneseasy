@@ -4,7 +4,6 @@
 <br>
 <?php
 //{{asset($samples[$i][0]->eagle_article->pdf)}}
-//dd($samples);
 ?>
 
 <div class="container-fluid">

@@ -10,5 +10,5 @@ return [
     'Type' => 'Type',
     'Primer Sequence (Forward)' => 'Primer Sequence (Forward)',
     'Primer Sequence (Reverse)' => 'Primer Sequence (Reverse)',
-    'ArticleFile' => 'Article(File)'
+    'File' => 'Species Image'
 ];

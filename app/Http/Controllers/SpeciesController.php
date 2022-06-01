@@ -25,7 +25,7 @@ class SpeciesController extends Controller
     {
         $this->service = $service;
         $this->speciesService = $speciesService;
-        $this->middleware('auth',['except' => ['ativar']]);
+        //$this->middleware('auth',['except' => ['ativar']]);
     }
 
     /**
@@ -35,9 +35,9 @@ class SpeciesController extends Controller
      */
     public function index()
     {
-        $animals = Species::where('tipo', TipoGene::ANIMAL()->value)->where('active', 1)->get();
-        $vegetables = Species::where('tipo', TipoGene::VEGETAL()->value)->where('active', 1)->get();
-        $microorganisms = Species::where('tipo', TipoGene::MICROORGANSIM()->value)->where('active', 1)->get();
+        $animals = Species::where('tipo', TipoGene::ANIMAL()->value)->where('active', 1)->paginate(15);
+        $vegetables = Species::where('tipo', TipoGene::VEGETAL()->value)->where('active', 1)->paginate(15);
+        $microorganisms = Species::where('tipo', TipoGene::MICROORGANSIM()->value)->where('active', 1)->paginate(15);
 
         //dd($vegetables);
         return view('species.index', compact(['animals','vegetables', 'microorganisms']));
@@ -63,7 +63,6 @@ class SpeciesController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-
         $data = $request->validate([
             'accession' => 'required',
             'article' => 'required',
@@ -79,8 +78,11 @@ class SpeciesController extends Controller
             'year' => 'required',
             'tipo' => 'required',
             'authors' => 'required',
-            'cq_area' => 'required'
+            'cq_area' => 'required',
+            'file' => 'required'
         ]);
+
+        
 
         $this->speciesService->storeSpecies($data);
 
@@ -107,12 +109,13 @@ class SpeciesController extends Controller
         $articles = [];
         $repeated_samples = [];
         $samples = [];
-
+        
+        
+        
         $article_ids = Article::whereIn('id',$article_ids)
                     ->where('active',1)
                     ->pluck('id');
 
-        //dd(compact(['article_ids']));
 
         foreach ($article_ids as $id)
         {
@@ -130,7 +133,7 @@ class SpeciesController extends Controller
                             ->first();
             array_push($articles,$article);
         }
-
+        //dd($articles);
         for ($i=0; $i < sizeof($repeated_samples); $i++)
         {
             $sample_collection = [];
@@ -175,6 +178,7 @@ class SpeciesController extends Controller
      */
     public function edit(Species $species)
     {
+        //dd($species);
         return view('species.edit', compact(['species']));
     }
 
@@ -212,7 +216,7 @@ class SpeciesController extends Controller
      */
     public function update(Request $request, Species $species)
     {
-
+        //dd($request->tipo );
         if($request->file('file'))
         {
             $file = $request->file('file');
@@ -221,19 +225,12 @@ class SpeciesController extends Controller
             $extension = pathinfo($full_name, PATHINFO_EXTENSION);
             $time = Carbon::now()->toDateTimeString();
 
-            
-
             $path = 'storage/images/'.$filename.'_'.$time.'.'.$extension;
-            //dd(public_path($path));
-            //dd(gd_info());
+
             $image = Image::make($file);
             $image->resize(75, 75);
-
-            //dd(Storage::disk('public')->getAdapter()->getPathPrefix());
             $image->save(public_path($path));
 
-            //Storage::disk('public')->put($path, $image );
-            //dd($species->realpath);
             if (isset($species->realpath))
             {
                 Storage::delete($species->realpath);
@@ -243,14 +240,18 @@ class SpeciesController extends Controller
             $species->realpath = $path;
         }
 
-        if(Auth::user()->can('edit species') && isset($request->active))
+        //if(Auth::user()->can('edit species') && isset($request->active))
+        if($request->active  !== null && $request->active === "on")
         {
             $species->active = 1;
         }
 
         $species->name = $request->name;
-        if($request->tipo != '-1')
+        if($request->tipo != "-1")
             $species->tipo = $request->tipo;
+
+            
+
         $species->save();
 
         $message = trans('flash.species updated');
@@ -266,6 +267,7 @@ class SpeciesController extends Controller
      */
     public function destroy(Species $species)
     {
+        //dd("uddiiiididi");
         try
         {
             $species->delete();
