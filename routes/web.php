@@ -27,8 +27,8 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 //RegsiterController
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register')->middleware('auth');
+Route::post('register', 'Auth\RegisterController@register')->middleware('auth');
 Route::get('password/forgotpassword', 'Auth\ForgotPasswordController@forgotPassword')->name('password.forgotpassword'); //1
 Route::post('password/resetpassword', 'Auth\ForgotPasswordController@resetPasswordEMail')->name('resetpassword');	//2
 Route::get('password/{user}/{token}/reset', 'Auth\ResetPasswordController@resetForm');

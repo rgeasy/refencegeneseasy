@@ -66,6 +66,7 @@ jobs:
             echo $USER_PASS | sudo -S docker images
 
             cd rgeasy/
+            echo $USER_PASS | sudo -S rm -rf public/storage
             echo $USER_PASS | sudo -S docker-compose up -d
             echo $USER_PASS | sudo -S docker-compose exec -T app composer install
             echo $USER_PASS | sudo -S docker-compose exec -T app php artisan storage:link

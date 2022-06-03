@@ -50,7 +50,9 @@ ul {
 			<a class="nav-link" href="{{ url('/contact') }}">{{__('commons.Contact') }}</a>
 		</li>
 
-
+		@auth
+			
+		@endauth
 		<!-- Authentication Links -->
 		@guest
 			<li class="nav-item">
@@ -66,6 +68,13 @@ ul {
 				</a>
 
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    @if (Auth::user()->email == 'lamsh@uft.edu.br' || Auth::user()->email == 'ivo.pontes@uft.edu.br' ||
+						 Auth::user()->email == 'micaele.sp@uft.edu.br' || Auth::user()->email == 'rafael.tavares@uft.edu.br')
+                        <a class="dropdown-item" href="{{ url('/admin') }}">
+                            {{ __('commons.Admin') }}
+                        </a>
+                    @endif
+
 					<a class="dropdown-item" href="{{ route('logout') }}"
 					   onclick="event.preventDefault();
 									 document.getElementById('logout-form').submit();">

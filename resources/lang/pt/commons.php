@@ -13,7 +13,7 @@ return [
     'Login' => 'Entrar',
     'Animal' => 'Animais',
     'Vegetable' => 'Plantas',
-    'Microorganism' => 'Microorganismos',
+    'Microorganism' => 'Micro-organismos',
     'Species' => 'Espécies',
     'Name' => 'Nome',
     'Update' => 'Atualizar',
@@ -21,5 +21,6 @@ return [
     'Cancel' => 'Cancelar',
     'Manual' => 'Manual do Usuário',
     'Activate' => 'Ativar',
-    'Samples' => 'Amostras'
+    'Samples' => 'Amostras',
+    'Admin' => 'Admin'
 ];

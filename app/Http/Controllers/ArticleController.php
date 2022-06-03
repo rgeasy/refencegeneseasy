@@ -59,6 +59,9 @@ class ArticleController extends Controller
         if($request->active  !== null && $request->active === "on")
         {
             $article->active = 1;
+        }else
+        {
+            $article->active = 0;
         }
 
         $article->name = $request->name;

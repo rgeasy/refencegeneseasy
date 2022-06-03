@@ -20,5 +20,6 @@ return [
     'Update' => 'Update',
     'Manual' => 'User Manual',
     'Activate' => 'Activate',
-    'Samples' => 'Samples'
+    'Samples' => 'Samples',
+    'Admin' => 'Admin'
 ];

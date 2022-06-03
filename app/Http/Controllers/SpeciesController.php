@@ -235,7 +235,7 @@ class SpeciesController extends Controller
             {
                 Storage::delete($species->realpath);
             }
-
+            
             $species->image = $filename.'.'.$extension;
             $species->realpath = $path;
         }
@@ -244,6 +244,9 @@ class SpeciesController extends Controller
         if($request->active  !== null && $request->active === "on")
         {
             $species->active = 1;
+        }else
+        {
+            $species->active = 0;
         }
 
         $species->name = $request->name;
