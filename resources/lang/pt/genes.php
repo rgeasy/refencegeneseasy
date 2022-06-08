@@ -10,6 +10,6 @@ return [
     'Type' => 'Tipo',
     'Primer Sequence (Forward)' => 'Primer Sequence (Forward)',
     'Primer Sequence (Reverse)' => 'Primer Sequence (Reverse)',
-    'File' => 'Imagem da Espécie'
-    
+    'File' => 'Imagem da Espécie',
+    'Image Input Text' => 'Escolha uma imagem'
 ];

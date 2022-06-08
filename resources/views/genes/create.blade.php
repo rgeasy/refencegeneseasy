@@ -6,6 +6,13 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-tagsinput.css') }}">
 
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/genes.create.css') }}">
+  <style>
+@media screen and (min-width: 768px) {
+  label[for=img], label[for=file]{
+    margin-left: .5rem;
+  }
+}
+  </style>
 @endsection
 
 @section('content')
@@ -21,9 +28,11 @@
             <div class="form-group col-lg-1 col-md-2 col-sm-3">
                <img id="show-image" src="" width="75" height="75"/>
             </div>
-            <div class="form-group col-lg-2 col-md-2 col-sm-3">
-              <label for="doi">{{ __('genes.File') }}</label>
-              <input type="file" class="form-control-file" name="file" id="file" onchange="readURL(this);">
+            <div class="form-group col-lg-3 col-md-4 col-sm-10 col-12">
+              <label for="img">{{ __('genes.File') }}</label>
+              <label for="file"  class="btn btn-secondary">{{__('genes.Image Input Text')}}</label>  
+              <input type="file" class="form-control-file" name="file" id="file" 
+                    onchange="readURL(this);" style="display:none">
             </div>
           </div>
           <div class="form-row" >
