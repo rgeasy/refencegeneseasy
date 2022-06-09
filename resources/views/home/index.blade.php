@@ -34,7 +34,7 @@
 	    <div class="col-md-8  offset-md-2">
 	    	<h3>{{ __('commons.Manual') }}</h3>
 	    	<p style="text-align: center;">
-	    		<a href="{{ url('/') }}/files/Manual de instruções.pdf" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> </span>Manual</a>
+	    		<a href="{{ url('/') }}/files/manual_en.pdf" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> </span>Manual</a>
 	    	</p>
 	    </div>
   	</div>
