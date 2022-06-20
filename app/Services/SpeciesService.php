@@ -27,7 +27,7 @@ class SpeciesService
             $extension = pathinfo($full_name, PATHINFO_EXTENSION);
             $time = Carbon::now()->toDateTimeString();
 
-            
+
 
             $path = 'storage/images/'.$filename.'_'.$time.'.'.$extension;
             //dd(public_path($path));
@@ -40,8 +40,8 @@ class SpeciesService
         if (is_string($species))
         {
             $species = array($species);
-        }   
-     
+        }
+
 
         for ($i=0; $i < sizeof($species); $i++)
         {
@@ -58,13 +58,13 @@ class SpeciesService
         }
 
         $authors = explode(",", $data['authors']);
-        
+
         $full_name = explode(" ", $authors[0]);
         $citation = ucfirst($full_name[count($full_name)-1]);
-           
+
         if (count($authors) > 1)
         {
-            $citation = $citation . ", et al.";  
+            $citation = $citation . " et al.";  
         }
 
         $article = new Article();
