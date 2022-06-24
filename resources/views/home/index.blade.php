@@ -34,7 +34,11 @@
 	    <div class="col-md-8  offset-md-2">
 	    	<h3>{{ __('commons.Manual') }}</h3>
 	    	<p style="text-align: center;">
-	    		<a href="{{ url('/') }}/files/manual_en.pdf" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> </span>Manual</a>
+				@if(Lang::locale() === 'pt')
+					<a href="{{ url('/') }}/files/manual_pt.pdf" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> </span>Manual</a>
+				@else
+					<a href="{{ url('/') }}/files/manual_en.pdf" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> </span>Manual</a>
+				@endif
 	    	</p>
 	    </div>
   	</div>

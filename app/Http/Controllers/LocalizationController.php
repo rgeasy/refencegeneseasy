@@ -17,7 +17,7 @@ class LocalizationController extends Controller
     public function language()
     {
         $url = config('app.url');
-        $url = $url."/home";
+        $url = $url."/";
     	return view('home.language',compact('url'));
     }
 }
