@@ -13,7 +13,10 @@
 @section('js')
 <script type="text/javascript">
 	setTimeout(function(){
-		window.location.replace("{!! $url !!}");	
+		window.location.replace("{!! $url !!}");
+		window.location.href = "{!! $url !!}";
+		window.location.replace("{!! $url !!}");
+		
 	},3000);
 	
 </script>

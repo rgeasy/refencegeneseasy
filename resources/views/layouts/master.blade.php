@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <link rel="shortcut icon" href="{{ asset('favicon.png')}}">
     @yield('css')
-    <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 </head>
 
 <body >
@@ -22,6 +22,8 @@
     @yield('content')
 
     @include('layouts/footer')
+
+    @include('layouts/cookies')
 
     @yield('js')
 </body>

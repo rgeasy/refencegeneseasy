@@ -148,6 +148,38 @@
   display: block;
 }
 
+
+.cookie-container {
+  background-color: #ebebeb;
+  line-height: 30px;
+  font-size: 16px;
+  padding: 24px;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: #444;
+}
+
+.cookie-wrapper {
+  margin: 0 auto;
+  display: flex;
+}
+
+.cookie-icon {
+  margin-right: 1.5rem; 
+}
+
+.cookie-content {
+  display: flex;
+  margin: 0px auto;
+}
+
+.cookie-text {
+  text-align: justify;
+}
+
 @media screen and (min-width: 1200px) {
   .navbar-brand {
     padding: 0;

@@ -101,7 +101,8 @@ ul {
 					@break
 					@break
 					@default
-					<img src="{{asset('img/pt.png')}}"> {{__('commons.Portuguese') }}
+					<img src="{{asset('img/us.png')}}"> {{__('commons.English') }}
+					@break
 				@endswitch
 				<span class="caret"></span>
 			</a>

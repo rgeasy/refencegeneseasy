@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class HomeController extends Controller
 {
@@ -63,5 +64,14 @@ class HomeController extends Controller
     public function t()
     {
         return view('home.table'); 
+    }
+
+    public function cookies()
+    {
+        //unset($_COOKIE['cookies']);
+        //setcookie('cookies', '', time() - 3600);
+
+        //dd(isset($_COOKIE['cookies']));
+        return view('home.cookies');
     }
 }
