@@ -22,6 +22,9 @@ Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 Route::get('/home', 'HomeController@home')->name('home');
+Route::get('/cookies', 'HomeController@cookies');
+Route::post('/cookies', 'CookieController@accept');
+
 //LoginController
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

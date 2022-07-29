@@ -24,6 +24,10 @@ class GeneController extends Controller
      */
     public function create()
     {
+        /*
+        if(isset($_COOKIE['accession']))
+            dd(json_decode($_COOKIE['accession'], true));
+        */
        return view('genes.create');
     }
 

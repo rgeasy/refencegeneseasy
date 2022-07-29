@@ -13,5 +13,20 @@ return [
     'edit articles' => 'Editar Artigos',
     'activate articles' => 'Ativar Artigos',
     'edit species' => 'Editar Espécies',
-    'activate species' => 'Ativar Espécies'
+    'activate species' => 'Ativar Espécies',
+    'cookies_policy' => 'Política de Cookies',
+    'cookies_bar_policy_text' => 'Este site usa Cookies para melhorar sua experiência.',
+    'cookies_policy_text_whats_a_cookie' => "<p><b>O que é um Cookie?</b></p>
+    <p>O Cookie é um arquivo que fica salvo em seu computador ou dispositivo quando você visita um site.
+        <br>Assim, um Cookie permite que suas preferências sejam lembradas durante a navegação.</p>",
+    'cookies_policy_text_why_do_we_use_it' => "<p><b>Por que usamos Cookies?</b></p>
+    <p>Nós utilizamos Cookies para guardar algumas preferências e registrar alguns dados de usuário relacionados ao sistema.
+    <br>Os dados que guardamos são divididos em dois grupos: Cookies de Sessão e Cookies Persistentes.
+    <br>A duração do Cookie pode variar dependendo das informações guardadas.</p>",
+    'cookies_policy_text_session' => "<p ><b>Cookies de Sessão</b></p>
+    <p>Cookies de sessão são temporários para lembrar de algumas informações durante a navegação atual.</p>",
+    'cookies_policy_text_persistent' => "<p ><b>Cookies Persistentes</b></p>
+    <p>Cookies Persistentes são usados para lembrar de algumas preferências de sites e eles são guardados em seu dispositivo mesmo depois que você fecha o navegador.
+    <br>Esses Cookies são importantes pois os usamos para saber qual linguagem você prefere, por exemplo.
+    <br>Também, nós guardamos algumas informações relacionadas às espécies durante algum tempo para quando você precise registrar as espécies se de alguma forma o registro falhar.</p>"
 ];
