@@ -63,11 +63,11 @@ class SpeciesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        //dd($data);
 
-        setcookie('accession', json_encode($data['accession'], time()+86400));
-        $message = trans('flash.species registered');
-        return redirect()->route('species.index')->with('message',$message);
+        //setcookie('accession', json_encode($data['accession'], time()+86400));
+        //$message = trans('flash.species registered');
+        //return redirect()->route('species.index')->with('message',$message);
 
         $data = $request->validate([
             'accession' => 'required',

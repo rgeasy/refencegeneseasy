@@ -30,6 +30,13 @@ class SpeciesService
 
 
             $path = 'storage/images/'.$filename.'_'.$time.'.'.$extension;
+            
+            if(!is_dir(public_path("storage/images")))
+            {
+                //dd(public_path("storage/images"));
+                mkdir(public_path("storage/images"), 0777, true);
+            }
+
             //dd(public_path($path));
             //dd(gd_info());
             $image = Image::make($file);
@@ -42,6 +49,7 @@ class SpeciesService
             $species = array($species);
         }
 
+        $debug_species = array();
 
         for ($i=0; $i < sizeof($species); $i++)
         {
