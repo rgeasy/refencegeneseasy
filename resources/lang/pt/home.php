@@ -17,16 +17,12 @@ return [
     'cookies_policy' => 'Política de Cookies',
     'cookies_bar_policy_text' => 'Este site usa Cookies para melhorar sua experiência.',
     'cookies_policy_text_whats_a_cookie' => "<p><b>O que é um Cookie?</b></p>
-    <p>O Cookie é um arquivo que fica salvo em seu computador ou dispositivo quando você visita um site.
-        <br>Assim, um Cookie permite que suas preferências sejam lembradas durante a navegação.</p>",
+    <p>O cookie é um arquivo que fica salvo no dispositivo ao visitar um site, permitindo que suas preferências sejam lembradas durante a navegação.</p>",
     'cookies_policy_text_why_do_we_use_it' => "<p><b>Por que usamos Cookies?</b></p>
-    <p>Nós utilizamos Cookies para guardar algumas preferências e registrar alguns dados de usuário relacionados ao sistema.
-    <br>Os dados que guardamos são divididos em dois grupos: Cookies de Sessão e Cookies Persistentes.
-    <br>A duração do Cookie pode variar dependendo das informações guardadas.</p>",
+    <p>Este site utiliza cookies apenas para guardar e registrar alguns dos dados do usuário relacionados ao sistema. Os dados guardados são divididos em dois grupos: cookies de sessão e cookies persistentes. A duração do cookie pode variar dependendo das informações guardadas.</p>",
     'cookies_policy_text_session' => "<p ><b>Cookies de Sessão</b></p>
-    <p>Cookies de sessão são temporários para lembrar de algumas informações durante a navegação atual.</p>",
+    <p>Cookies de sessão são temporários, sendo utilizados apenas durante a navegação atual.</p>",
     'cookies_policy_text_persistent' => "<p ><b>Cookies Persistentes</b></p>
-    <p>Cookies Persistentes são usados para lembrar de algumas preferências de sites e eles são guardados em seu dispositivo mesmo depois que você fecha o navegador.
-    <br>Esses Cookies são importantes pois os usamos para saber qual linguagem você prefere, por exemplo.
-    <br>Também, nós guardamos algumas informações relacionadas às espécies durante algum tempo para quando você precise registrar as espécies se de alguma forma o registro falhar.</p>"
+    <p>Cookies persistentes são usados para indicar algumas preferências do usuário e são guardados em seu dispositivo mesmo após o encerramento do navegador.
+    Esses cookies são importantes para habilitar algumas funcionalidades como o armazenamento de informações relacionadas às espécies no momento de registro, caso este venha a falhar.</p>"
 ];

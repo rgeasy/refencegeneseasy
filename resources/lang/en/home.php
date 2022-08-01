@@ -17,18 +17,13 @@ return [
     'cookies_policy' => 'Cookies Policy',
     'cookies_bar_policy_text' => 'This site uses cookies to offer you a better browsing experience.',
     'cookies_policy_text_whats_a_cookie' => "<p><b>What's a Cookie?</b></p>
-    <p>A Cookie is a file saved in your computer or device when you visit a website. 
-    <br>Therefore, a Cookie allows that your preferencies be remembered while browsing.</p>",
-    'cookies_policy_text_why_do_we_use_it' => "<p><b>Why do we use it?</b></p>
-    <p>We use it in order to keep some preferences and register some system-related user data.
-    <br>The data we store is composed in two groups: Session Cookies and Persistent Cookies.
-    <br>The Cookie duration may change depending on the information stored.</p>",
+    <p>A Cookie is file that is saved on one's device when visiting a website, allowing preferences to be remembered while browsing.</p>",
+    'cookies_policy_text_why_do_we_use_it' => "<p><b>Why do we use Cookies?</b></p>
+    <p>This website uses Cookies only to store and register user's information related to the system. This information is divided into two groups: session Cookies and persistent Cookies. The duration of the Cookie may vary depending on the stored information.</p>",
     'cookies_policy_text_session' => "<p><b>Session Cookies</b></p>
-    <p>Session Cookies are temporary data used to rebember some user information applied to the current browsing.</p>",
+    <p>Session Cookies are temporary Cookies and are present only during browsing.</p>",
     'cookies_policy_text_persistent' => "<p><b>Persistent Cookies</b></p>
-    <p>Persistent Cookies are used to remember some website preferences and they keep stored in your device even after you close the browser.
-    <br>Those Cookies are important because we need to know which language you prefer, for instance. 
-    <br>Also, we keep some related data for some time when you need to register a species if the registration somehow fails.</p>",
+    <p>Persistent Cookies are used to indicate some of the user preferences, being saved on one's device even after closing the browser. These Cookies are important to enable some functionalities of the system, such as storing information related to a species during its registration in case it fails.</p>",
 ];
 
 
