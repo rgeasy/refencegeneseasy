@@ -11,5 +11,6 @@ return [
     'Primer Sequence (Forward)' => 'Primer Sequence (Forward)',
     'Primer Sequence (Reverse)' => 'Primer Sequence (Reverse)',
     'File' => 'Species Image',
-    'Image Input Text' => 'Choose an Image'
+    'Image Input Text' => 'Choose an Image',
+    'Add Image Link' => 'Add Image Link:'
 ];

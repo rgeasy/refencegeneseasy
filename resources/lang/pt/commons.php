@@ -13,7 +13,7 @@ return [
     'Login' => 'Entrar',
     'Animal' => 'Animais',
     'Vegetable' => 'Plantas',
-    'Microorganism' => 'Micro-organismos',
+    'Microorganism' => 'Micro-organismos', //[Gramática] Grafia anterior ao Acordo Ortográfico: microorganismo.
     'Species' => 'Espécies',
     'Name' => 'Nome',
     'Update' => 'Atualizar',

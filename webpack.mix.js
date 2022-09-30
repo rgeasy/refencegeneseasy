@@ -11,7 +11,24 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+
+
+ mix.js('resources/js/app.js', 'public/js')
+ .version()
+ .webpackConfig(require('./webpack.config'));
 
 mix.js('resources/js/Gene.js', 'public/js/genes');
+
+mix.js('resources/js/register.js', 'public/js/paper/register.js');
+
+mix.sass('resources/sass/app.scss', 'public/css').version();
+
+
+if (mix.inProduction()) {
+ mix.version();
+}
+mix.webpackConfig({
+ watchOptions: {
+     ignored: /node_modules/
+ }    
+});

@@ -15,11 +15,26 @@ class SpeciesService
 {
 	public function storeSpecies($data)
 	{
-        $species = explode(',', $data['species']);
-
-        /* Tratamento de Imagens */
+        //dd($data);
         $file = $data['file'];
 
+        $genes = $this->getGeneNames($data['cq_area']);
+        
+        $this->saveImage($file);
+
+        $this->saveSpecies($data['species'],$file, $data['tipo'],$data['image_citation']);
+
+        $article = $this->saveArticle($data);
+
+        $this->saveSamples($data['cq_area'],$article->id,$genes);
+
+        $this->saveGenes($data['gene_area'], $article->id,$data['species'],$genes);
+
+	}
+
+
+    private function saveImage($file)
+    {
         if($file)
         {
             $full_name = $file->getClientOriginalName();
@@ -27,44 +42,43 @@ class SpeciesService
             $extension = pathinfo($full_name, PATHINFO_EXTENSION);
             $time = Carbon::now()->toDateTimeString();
 
-
-
             $path = 'storage/images/'.$filename.'_'.$time.'.'.$extension;
             
             if(!is_dir(public_path("storage/images")))
             {
-                //dd(public_path("storage/images"));
                 mkdir(public_path("storage/images"), 0777, true);
             }
 
-            //dd(public_path($path));
-            //dd(gd_info());
             $image = Image::make($file);
             $image->resize(75, 75);
             $image->save(public_path($path));
         }
+    }
 
-        if (is_string($species))
+    private function saveSpecies($species,$file,$tipo,$image_citation)
+    {
+        $full_name = $file->getClientOriginalName();
+        $filename = pathinfo($full_name, PATHINFO_FILENAME);
+        $extension = pathinfo($full_name, PATHINFO_EXTENSION);
+        $time = Carbon::now()->toDateTimeString();
+        $path = 'storage/images/'.$filename.'_'.$time.'.'.$extension;
+
+        //Tratando o nome da espécie, removendo espaços no fim e começo da string
+        $species = ltrim($species);
+        $species = rtrim($species);
+
+        if (!Species::where('name','=',strtolower($species))->exists())
         {
-            $species = array($species);
+            $new_species = Species::create(['name' => strtolower($species), 'tipo' => $tipo]);
+            $new_species->image = $filename.'.'.$extension;
+            $new_species->realpath = $path;
+            $new_species->image_citation = $image_citation;
+            $new_species->save();
         }
+    }
 
-        $debug_species = array();
-
-        for ($i=0; $i < sizeof($species); $i++)
-        {
-            $species[$i] = ltrim($species[$i]);
-            $species[$i] = rtrim($species[$i]);
-
-            if (!Species::where('name','=',strtolower($species[$i]))->exists())
-            {
-                $new_species = Species::create(['name' => strtolower($species[$i]), 'tipo' => $data['tipo'][$i]]);
-                $new_species->image = $filename.'.'.$extension;
-                $new_species->realpath = $path;
-                $new_species->save();
-            }
-        }
-
+    private function saveArticle($data)
+    {
         $authors = explode(",", $data['authors']);
 
         $full_name = explode(" ", $authors[0]);
@@ -83,42 +97,75 @@ class SpeciesService
         $article->author = $citation;
         $article->save();
 
-        $samples_cqs = str_replace("\r\n","\t",$data['cq_area']);
-        $samples_cqs = explode("\t",$samples_cqs);
-        $samples_cqs = array_chunk($samples_cqs, sizeof($data['genes']));
+        return $article;
+    }
 
+    private function saveSamples($cqs, $article,$genes)
+    {
+        //Salvando amostras e removendo os genes do Gene Area
+        $samples_cqs = explode("\n",$cqs);
+        $removed_sample = array_shift($samples_cqs);
+        //dd($samples_cqs);
 
         for ($i=0; $i <  sizeof($samples_cqs) ; $i++)
         {
-            $samples = new Sample();
-            $samples->article = $article->id;
-            $samples_cqs[$i][0] = ltrim($samples_cqs[$i][0],"__");
-            $samples_cqs[$i][0] = rtrim($samples_cqs[$i][0],"__");
-            $samples->values = join(" ",$samples_cqs[$i]);
-            $samples->name = $samples_cqs[$i][0];
-            $samples->save();
+            $samplex = str_replace("\r\n","",$samples_cqs[$i]);
+            $samplex = str_replace("\r","",$samplex);
+            $samplex = str_replace(" ","__",$samplex);
+            $samplex = ltrim($samplex,"__");
+            $samplex = rtrim($samplex,"__");
+            $samplex =  str_replace("\t"," ",$samplex);
+
+            $sample = new Sample();
+            $sample->article = $article;
+            $sample->values = $samplex;
+            //dump($samplex)
+            $sample_name = explode(" ", $samplex);
+            $sample->name = $sample_name[0];
+            $sample->save();
         }
 
-        //dd($samples);
+        //dd($samples_cqs);
+    }
 
-        for ($i=0; $i < sizeof($data['primer_forward']); $i++)
+    private function saveGenes($gene_area,$article,$species,$genes)
+    {
+        $genes_data = explode("\n",$gene_area);
+        $removed_sample = array_shift($genes_data);
+        //dd($genes_data);
+        for ($i=0; $i < sizeof($genes_data); $i++)
         {
-            //dd($data);
-            $gene = new Gene();
-            $gene->name = $data['genes'][$i+1];
-            $gene->bank = $data['bank'][$i];
-            $gene->e = $data['e'][$i];
-            $gene->primer_forward = $data['primer_forward'][$i];
-            $gene->primer_reverse = $data['primer_reverse'][$i];
-            $gene->r2 = $data['r2'][$i];
-            $gene->article = $article->id;
-            $gene->accession = $data['accession'][$i];
-            $species_index = $data['selected_species'][$i];
-            $species_name = strtoupper($species[$species_index]);
-            $selected_species = Species::where('name', '=',$species_name )->first();
-            $gene->species = $selected_species->id;
+            $gene_data = str_replace("\r\n","",$genes_data[$i]);
+            $gene_data = str_replace("\r","",$gene_data);
+            $gene_data = explode("\t",$gene_data);
 
+            $gene = new Gene();
+            $gene->name = $gene_data[0];
+            $gene->primer_forward = $gene_data[1];
+            $gene->primer_reverse = $gene_data[2];
+            $gene->r2 = $gene_data[3];
+            $gene->e = $gene_data[4];
+            $gene->accession = $gene_data[5];
+            $gene->bank = $gene_data[6];
+            $gene->article = $article;
+            
+            $selected_species = Species::where('name', '=',strtoupper($species) )->first();
+            $gene->species = $selected_species->id;
+            //dump($gene);
             $gene->save();
         }
-	}
+        //dd($genes);
+    }
+
+    private function getGeneNames($cq_area)
+    {
+
+        $genes = explode("\n",$cq_area);
+        $genes = $genes[0];
+        $genes = str_replace("\r\n","",$genes);
+        $genes = str_replace("\r","",$genes);
+        $genes = explode("\t",$genes);
+        $removed_sample = array_shift($genes);
+        return $genes;
+    }
 }

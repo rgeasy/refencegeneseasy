@@ -66,14 +66,14 @@ class Gene
 	  	}
 	  });
 
-	  generateRefGenes.addEventListener('click', function(e){
+	  generateRefGenesold.addEventListener('click', function(e){
 	    e.preventDefault();
 
 	    var genes = document.getElementsByName('genes[]');
 	    var cqs = document.getElementsByName('cqs[]');
 	    console.log("Form:");
 	    var form_new_species = document.getElementById("form-new-species");
-
+		
 	    var novos_dados = "";
 	    var i = 0;
 	    for(i = 1; i < genes.length; i++)
@@ -142,8 +142,10 @@ class Gene
 	    //console.log(area);
 	    $('input[name="cqs[]"').remove();
 	    //throw new Error("ERROR");
+		var genes_data= document.getElementById('gene_area');
+		form_new_species.appendChild(genes_data);
 
-	    form_new_species.submit();
+		form_new_species.submit();
 
 	  });
 

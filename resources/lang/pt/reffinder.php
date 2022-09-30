@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Reffinder Result' => 'Reffinder: Resultado',
+    'Reffinder Result' => 'RefFinder: Resultado',
     'How to Cite' => 'How to Cite',
      'Add the Species Here:' => 'Adicione as espécies usadas aqui:',
     'Article' => 'Artigo',

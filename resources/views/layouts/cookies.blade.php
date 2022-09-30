@@ -1,4 +1,4 @@
-@if (isset($_COOKIE['cookies']) === false):
+@if (isset($_COOKIE['cookies']) === false)
 <div class="cookie-container" id="cookie-container">
 	<div class="cookie-wrapper">
 		<div class="cookie-content">
