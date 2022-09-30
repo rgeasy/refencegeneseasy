@@ -13,3 +13,4 @@
   <script src="{{ asset('/js/typeahead.bundle.min.js') }}"></script>
   <script src="{{ asset('/js/bootstrap-tagsinput.min.js') }}"></script>
 @endif
+  <script type="text/javascript" src="{{ asset('/js/app.js')}}"></script>

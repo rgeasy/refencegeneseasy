@@ -1,11 +1,11 @@
 @extends('layouts/master')
 
 @section('css')
+  <link href="/path/to/css/fileinput.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-select.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-tagsinput.css') }}">
 
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/genes.create.css') }}">
-
   <style>
 @media screen and (min-width: 768px) {
   label[for=img], label[for=file]{
@@ -34,33 +34,7 @@
               <input type="file" class="form-control-file" name="file" id="file" 
                     onchange="readURL(this);" style="display:none">
             </div>
-            <div class="form-group col-lg-8">
-              <div class="form-row justify-content-center">
-                <label for="tipo">{{__('species.Choose Species')}}</label><br>
-              </div>
-              <div class="form-row justify-content-center">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="tipo" value="1">
-                  <label class="form-check-label" for="animal">{{__('commons.Animal')}}</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="tipo" value="2">
-                  <label class="form-check-label" for="vegetable">{{ __('commons.Vegetable') }}</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="tipo" value="3">
-                  <label class="form-check-label" for="microorganism">{{ __('commons.Microorganism') }}</label>
-                </div>
-              </div>
-            </div>
           </div>
-          <div class="form-row" >
-            <div class="form-group col-lg-12 col-md-12 col-sm-12">
-              <label for="image_citation">{{ __('genes.Add Image Link') }}</label><br>
-              <input type="text" class="form-control" value="" name="image_citation" id="image_citation"/>
-            </div>
-          </div>  
-          <br>
           <div class="form-row" >
             <div class="form-group col-lg-12 col-md-12 col-sm-12">
               <label for="artigo">{{ __('genes.Add the Species Here:') }}</label><br>
@@ -90,7 +64,7 @@
           <div class="form-row">
             <div class="form-group col-md-12 col-sm-12">
                 <label for="area">{{ __('genes.CQ Data') }}</label>
-                <textarea id="cq_area" name="cq_area" rows="4" cols="50" class="form-control">
+                <textarea id="area" name="cq_area" rows="4" cols="50" class="form-control">
                 </textarea>
             </div>
           </div>
@@ -102,7 +76,45 @@
             </div>
           </div>
 
-          <button type="button" class="btn btn-success btn-lg btn-block" id="generateRG">{{ __('genes.Generate Table') }}</button>
+          <button type="button" class="btn btn-success btn-lg btn-block" id="gr">{{ __('genes.Generate Table') }}</button>
+          <div id="CT-table" style="display: none;" class="container-fluid">
+            <div class="form-row">
+              <div id="tabela-editavel" class="form-group col-md-6 col-sm-6 col-lg-6">
+                  <label for="dados">{{ __('genes.CQ Data') }}</label>
+                  <table class='table table-bordered' align='center'>
+                    <thead>
+                      <tr></tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+
+
+            <div class="form-row" id="geneCards">
+
+
+            </div>
+
+
+            <div class="form-row">
+              <div class="form-group col-md-12 col-sm-12">
+
+              </div>
+            </div>
+
+
+            <div class="form-row">
+              <div class="form-group col-md-12 col-sm-12">
+
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg btn-block" id="gr">{{ __('genes.Generate') }}</button>
+          </div>
+          <br>
           <br>
         </form>
       </div>
@@ -110,38 +122,74 @@
   </div>
 
   <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <table id="tabela">
+
+      </table>
+    </div>
   </div>
 
 </div>
+
+
+
 
 @endsection
 
 @section('js')
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type="text/javascript" src="{{ asset('/js/genes/Gene.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/js/paper/register.js') }}"></script>
 
 <script type="text/javascript">
-    var locale = '{{ config('app.locale') }}';
+      window.words = [];
+
+      window.words['choose_species'] = "{{__('species.Choose Species')}}";
+      window.words['type'] = "{{ __('species.Type') }}";
+      window.words['animal'] = "{{ __('commons.Animal') }}";
+      window.words['vegetable'] = "{{ __('commons.Vegetable') }}";
+      window.words['microorganism'] = "{{ __('commons.Microorganism') }}";
+      window.words['species'] = "{{ __('commons.Species') }}";
+      window.words['primer_forward'] = "{{ __('species.Primer Sequence (Forward)') }}";
+      window.words['primer_reverse'] = "{{ __('species.Primer Sequence (Reverse)') }}";
+      window.words['bank'] = "{{ __('species.Bank') }}";
+
+
    /**
    * Main application element, simply registers the web components
    */
-    function readURL(input)
-    {
-        if (input.files && input.files[0])
-        {
-            var reader = new FileReader();
+    const app = async () => {
+    console.log("App\n");
+    var locale = '{{ config('app.locale') }}';
+    console.log("Epp\n");
 
-            reader.onload = function (e) {
-                $('#show-image')
-                    .attr('src', e.target.result)
-                    .width(75)
-                    .height(75);
-            };
+    var generateRefGenes = document.getElementById("gr");
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+    generateRefGenes.addEventListener('click', function(e) {
+      console.log("boulos");
+      e.preventDefault();
+  
+      var genes_data= document.getElementById('gene_area');
+      });
 
+  };
+
+  function readURL(input)
+  {
+      if (input.files && input.files[0])
+      {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              $('#show-image')
+                  .attr('src', e.target.result)
+                  .width(75)
+                  .height(75);
+          };
+
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+
+  document.addEventListener("DOMContentLoaded", app);
 </script>
 @endsection

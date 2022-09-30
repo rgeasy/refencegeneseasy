@@ -32,7 +32,7 @@ class ReffinderController extends Controller
         $articleId = $request->only('article');
 
         $result = $this->service->compileData($article, $articleId,$sample_names);
-
+        //dd($result);
         $html = $result[0];
         $genes = $result[1];
         $article = $result[2];

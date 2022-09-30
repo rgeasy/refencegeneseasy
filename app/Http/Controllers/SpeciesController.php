@@ -63,29 +63,23 @@ class SpeciesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        //dd($data);
+
 
         //setcookie('accession', json_encode($data['accession'], time()+86400));
         //$message = trans('flash.species registered');
         //return redirect()->route('species.index')->with('message',$message);
 
         $data = $request->validate([
-            'accession' => 'required',
             'article' => 'required',
-            'bank' => 'required',
             'doi' => 'required',
-            'e' => 'required',
-            'genes' => 'required',
-            'primer_forward' => 'required',
-            'primer_reverse' => 'required',
-            'r2' => 'required',
-            'selected_species' => 'required',
             'species' => 'required',
             'year' => 'required',
             'tipo' => 'required',
             'authors' => 'required',
             'cq_area' => 'required',
-            'file' => 'required'
+            'file' => 'required',
+            'gene_area' => 'required',
+            'image_citation' => 'required'
         ]);
 
         

@@ -9,5 +9,5 @@ return [
     'Are You Sure' => 'Are you sure you want to activate this Article?',
     'Successfully Activated' => 'Species Successfully Activated.',
     'Not Activated' => 'The Article Was Not Activated.',
-    'Choose Species' => 'Which group of organisms does the new species belongs to?'
+    'Choose Species' => 'Which group of organisms does the new species belong to?'
 ];
