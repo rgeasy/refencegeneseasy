@@ -5,7 +5,7 @@ return [
     'DOI' => 'DOI',
     'Year' => 'Year',
     'CQ Data' => 'Cq Data',
-    'Generate Table' => 'Generate Table',
+    'Generate Table' => 'Create',
     'Generate' => 'Generate',
     'Type' => 'Type',
     'Primer Sequence (Forward)' => 'Primer Sequence (Forward)',
