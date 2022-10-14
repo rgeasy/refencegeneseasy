@@ -44,10 +44,11 @@ class SpeciesService
 
             $path = 'storage/images/'.$filename.'_'.$time.'.'.$extension;
             
+            /*
             if(!is_dir(public_path("storage/images")))
             {
                 mkdir(public_path("storage/images"), 0777, true);
-            }
+            }*/
 
             $image = Image::make($file);
             $image->resize(75, 75);
