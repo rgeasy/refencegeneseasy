@@ -79,7 +79,7 @@ class SpeciesController extends Controller
             'cq_area' => 'required',
             'file' => 'required',
             'gene_area' => 'required',
-            'image_citation' => 'required'
+            'image_citation' => 'nullable'
         ]);
 
         
