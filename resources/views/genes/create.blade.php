@@ -57,7 +57,7 @@
           <div class="form-row" >
             <div class="form-group col-lg-12 col-md-12 col-sm-12">
               <label for="image_citation">{{ __('genes.Add Image Link') }}</label><br>
-              <input type="text" class="form-control" value="" name="image_citation" id="image_citation"/>
+              <input type="text" class="form-control" value="" name="image_citation" id="image_citation"  placeholder="{{__('genes.Not Mandatory Field')}}"/>
             </div>
           </div>  
           <br>
@@ -89,14 +89,14 @@
           </div>
           <div class="form-row">
             <div class="form-group col-md-12 col-sm-12">
-                <label for="area">{{ __('genes.CQ Data') }}</label>
+                <label for="area">{{ __('genes.Cq Values') }}</label>
                 <textarea id="cq_area" name="cq_area" rows="4" cols="50" class="form-control">
                 </textarea>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-12 col-sm-12">
-                <label for="gene_area">{{ __('Genes Data') }}</label>
+                <label for="gene_area">{{ __('genes.Reference Genes Information') }}</label>
                 <textarea id="gene_area" name="gene_area" rows="4" cols="50" class="form-control">
                 </textarea>
             </div>

@@ -12,5 +12,8 @@ return [
     'Primer Sequence (Reverse)' => 'Primer Sequence (Reverse)',
     'File' => 'Imagem da Espécie',
     'Image Input Text' => 'Escolha uma Imagem',
-    'Add Image Link' => 'Adicionar o Link da Imagem:'
+    'Add Image Link' => 'Adicionar o Link da Imagem:',
+    'Cq Values' => 'Valores Cq',
+    'Reference Genes Information' => 'Informações sobre os Genes de Referência',
+    'Not Mandatory Field' => 'Campo não obrigatório'
 ];
