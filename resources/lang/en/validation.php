@@ -117,6 +117,8 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'New Species' => 'Species still not registred, please Register New Species.',
+    'Species Already Exists' => 'This species already exists. Please, register a new study instead.',
 
     /*
     |--------------------------------------------------------------------------

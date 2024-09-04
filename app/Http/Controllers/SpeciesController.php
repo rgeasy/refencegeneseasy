@@ -67,7 +67,15 @@ class SpeciesController extends Controller
 
         //setcookie('accession', json_encode($data['accession'], time()+86400));
         //$message = trans('flash.species registered');
-        //return redirect()->route('species.index')->with('message',$message);
+        $species = Species::where('name', $data['species'])->get();
+
+        //Verificar se espécie já existe.
+        if(!$species->isEmpty())
+        {
+            $message = trans('validation.Species Already Exists');
+            return back()->withErrors($message);
+        }
+
 
         $data = $request->validate([
             'article' => 'required',

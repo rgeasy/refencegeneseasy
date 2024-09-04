@@ -2,6 +2,7 @@
 
 return [
     'Register New Species' => 'Registrar Novas Espécies',
+    'Register New Study' => 'Registrar Novo Estudo',
     'About Us' => 'Sobre Nós',
     'New Language Set Successfully' => 'Linguagem Atualizada com Sucesso',
     'Who_developed_text' => 'O desenvolvimento da Ferramenta RGeasy é fruto de uma parceria entre os pesquisadores do Laboratório de Análises Moleculares (LAM) e do Curso de Ciência da Computação da Universidade Federal do Tocantins (UFT), juntamente com os pesquisadores do Laboratório de Fisiologia Molecular de Plantas da Universidade Federal de Lavras (UFLA).',

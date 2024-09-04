@@ -44,6 +44,8 @@ Route::post('/articles/activate','SpeciesController@ativar');
 Route::resource('/species', 'SpeciesController')->except(['edit']);
 Route::resource('/genes', 'GeneController');
 
+Route::get('/articles/create','ArticleController@create');
+Route::post('/articles', 'ArticleController@store');
 //Reffinder
 Route::post('reffinder', 'ReffinderController@index');
 

@@ -117,7 +117,8 @@ return [
     'uploaded' => 'O campo <b>:attribute</b> falhou em fazer o upload.',
     'url' => 'O formato do campo <b>:attribute</b> está inválido.',
     'uuid' => 'O campo <b>:attribute</b> deve ser um UUID válido.',
-
+    'New Species' => 'Espécie ainda não registrada, favor Registrar Nova Espécie.',
+    'Species Already Exists' => 'Esta espécie já está registarada. Por favor, registre como um novo estudo.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

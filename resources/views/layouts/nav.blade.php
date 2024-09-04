@@ -44,6 +44,9 @@ ul {
 			<a class="nav-link" href="{{ url('/genes/create') }}">{{__('home.Register New Species') }}</a>
 		</li>
 		<li class="nav-item">
+			<a class="nav-link" href="{{ url('/articles/create') }}">{{__('home.Register New Study') }}</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link" href="{{ url('/about') }}">{{__('home.About Us') }}</a>
 		</li>
 		<li class="nav-item">

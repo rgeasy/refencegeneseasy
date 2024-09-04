@@ -2,6 +2,7 @@
 
 return [
     'Register New Species' => 'Register New Species',
+    'Register New Study' => 'Register New Study',
     'About Us' => 'About Us',
   	'New Language Set Successfully' => 'New Language Set Successfully',
     'Who_developed_text' => 'The RGeasy tool has originated from a partnership between researchers of the Laboratory of Molecular Analysis (LAM) and the Computer Science Course from the Federal University of Tocantins (UFT), along with researchers of the Plant Molecular Physiology Laboratory from the Federal University of Lavras (UFLA).',

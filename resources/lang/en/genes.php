@@ -15,5 +15,6 @@ return [
     'Add Image Link' => 'Add Image Link:',
     'Cq Values' => 'Cq Values',
     'Reference Genes Information' => 'Reference Genes Information',
-    'Not Mandatory Field' => 'Not Mandatory Field'
+    'Not Mandatory Field' => 'Not Mandatory Field',
+    'Find a Species' => 'Find a Species'
 ];

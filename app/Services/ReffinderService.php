@@ -23,7 +23,7 @@ class ReffinderService
 		        'method'  => 'POST',
 		        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
 		        'content' => $json,
-		        'timeout' => 500
+		        'timeout' => 5000
 		    )
 		);
 
@@ -71,7 +71,7 @@ class ReffinderService
             $s = explode(" ",$sample->values,2);
             
             $s = str_replace(" ", "\t", $s[1]);
-            
+            //if($key !== 0){$cq_data.$s=(float)$cq_data.$s;}
             if (intval($key) == (count($samples)-1))
             {
                 $cq_data = $cq_data.$s;
