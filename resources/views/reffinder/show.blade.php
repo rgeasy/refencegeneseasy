@@ -115,7 +115,8 @@
           <h5>{{ __('reffinder.References') }}:</h5>
           <ul>
             <li><a href="#">Reference Genes Easy</a></li>
-            <li><a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/22290409/">RefFinder</a></li>
+            <li><a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/22290409/">RefFinder (XIE et al., 2012)</a></li>
+            <li><a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/37060478/">RefFinder (XIE et al., 2023)</a></li>
             <li><a target="_blank" href="https://doi.org/{{$article->doi}}">{{ $article->name }}</a></li>
           </ul>
         </td>
