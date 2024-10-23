@@ -16,7 +16,7 @@ return [
     'ArticleFile' => 'Article(File)',
     'Bank' => 'Bank',
     'How to Cite' => 'How to Cite',
-    'Tool Phrase' => 'The RGeasy tool (citation soon) was used for the selection of reference genes through a new combination of treatments, obtained from the study developed by Freitas et al. (2017) and ranked by the RefFinder (XIE et al., 2012; XIE et al., 2023).',
+    'Tool Phrase' => 'The RGeasy tool (De Souza et al., 2024) was used for the selection of reference genes through a new combination of treatments, obtained from the study developed by Freitas et al. (2017) and ranked by the RefFinder (XIE et al., 2012; XIE et al., 2023).',
     'References' => 'References',
     'General Information About the Genes' => 'General Information About the Genes',
     'Result Obtained by the New Samples Combination' => 'Result Obtained by the New Samples Combination'
